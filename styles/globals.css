@@ -1,0 +1,6 @@
+/* This is used by post page to have height control size of containers*/
+html,
+body,
+div#__next {
+  height: 100%;
+}
