@@ -35,17 +35,15 @@ const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <meta property="og:image" content={getPostSrcFromIndex(id)} />
       </Head>
       <Header>
-        <>
-          <BackButton
-            isRouterBack={
-              process.browser
-                ? window.history.length > initialHistoryLength
-                : false
-            }
-          />
-          <p>{description}</p>
-          <InfoIcon />
-        </>
+        <BackButton
+          isRouterBack={
+            process.browser
+              ? window.history.length > initialHistoryLength
+              : false
+          }
+        />
+        <p>{description}</p>
+        <InfoIcon />
       </Header>
       <main id="post-page">
         <LazyImage
@@ -82,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { pid } }) => {
 
   const { gridPreview, ...image } = (await getMeta()).images[
     initialMeta.totalImages - id - 1
-  ] // Images are ordered from max->min
+  ] // Images are ordered from max -> min
 
   return {
     props: {
