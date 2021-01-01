@@ -1,7 +1,5 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { useRouter } from 'next/router'
 import { getPostSrcFromIndex } from '../lib/helpers'
 import ImageGrid from '../components/ImageGrid'
 import { useImages } from '../hooks/'
@@ -11,12 +9,6 @@ import { ogImageDefault } from '../config'
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   initialMeta,
 }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.replace('/') // TODO: This is a hack so that history is properly updated
-  }, [])
-
   const { images } = useImages(initialMeta)
 
   const ogImage =

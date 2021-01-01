@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import Router from 'next/router'
+import router from 'next/router'
 import { initialize, logPageView } from '../lib/analytics'
 import globalStyles from '../styles/globals'
 import reset from '../styles/reset'
@@ -13,7 +13,8 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     initialize()
     //logPageView() // Initial page view: router.replace() makes this not necessary
-    Router.events.on('routeChangeComplete', logPageView)
+    router.events.on('routeChangeComplete', logPageView)
+    router.replace(router.asPath) // This is a hack, because history isn't updating properly
   }, [])
 
   const [initialHistoryLength] = useState(
