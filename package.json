@@ -29,7 +29,7 @@
     "@types/sharp": "^0.26.1",
     "@types/styled-jsx": "^2.2.8",
     "exifr": "^6.0.0",
-    "sharp": "^0.26.3",
+    "sharp": "^0.30.5",
     "smartcrop": "^2.0.3",
     "smartcrop-sharp": "^2.0.3",
     "ts-node": "^9.1.0",
