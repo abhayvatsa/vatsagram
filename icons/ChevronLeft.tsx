@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from 'react';
 
 const ChevronLeft: FC<{
   onClick?: (e: MouseEvent) => void;

@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import ChevronLeft from "../icons/ChevronLeft";
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import ChevronLeft from '../icons/ChevronLeft';
 
 const BackButton = function ({ isRouterBack }) {
   const { back } = useRouter();

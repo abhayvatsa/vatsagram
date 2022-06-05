@@ -1,4 +1,4 @@
-import css from "styled-jsx/css";
+import css from 'styled-jsx/css';
 
 // Modified from: A Modern CSS Reset
 // https://hankchizljaw.com/wrote/a-modern-css-reset/
@@ -25,8 +25,8 @@ export default css.global`
   }
 
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-  ul[role="list"],
-  ol[role="list"] {
+  ul[role='list'],
+  ol[role='list'] {
     list-style: none;
   }
 

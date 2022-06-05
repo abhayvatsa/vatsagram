@@ -1,14 +1,14 @@
-import { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
-import Head from "next/head";
-import LazyImage from "../../components/LazyImage";
-import Header from "../../components/Header";
-import InfoIcon from "../../icons/InfoIcon";
-import BackButton from "../../components/BackButton";
+import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
+import LazyImage from '../../components/LazyImage';
+import Header from '../../components/Header';
+import InfoIcon from '../../icons/InfoIcon';
+import BackButton from '../../components/BackButton';
 import {
   getPostSrcFromIndex,
   getPostSrcSetsFromIndex,
-} from "../../lib/helpers";
-import { getMeta } from "../api/meta";
+} from '../../lib/helpers';
+import { getMeta } from '../api/meta';
 
 const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   image: { id, description, postPreview },

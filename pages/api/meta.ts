@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import util from "util";
-import path from "path";
+import { NextApiRequest, NextApiResponse } from 'next';
+import fs from 'fs';
+import util from 'util';
+import path from 'path';
 const readFile = util.promisify(fs.readFile);
-import { PromiseValue } from "../../lib/utils";
-import { IMAGES_PER_PAGE } from "../../config";
+import { PromiseValue } from '../../lib/utils';
+import { IMAGES_PER_PAGE } from '../../config';
 
 export interface Image {
   id: number;
@@ -14,7 +14,7 @@ export interface Image {
 }
 
 function getImagesInPageRange(page: number | undefined, totalImages: number) {
-  if (typeof page === "undefined") {
+  if (typeof page === 'undefined') {
     return [0, totalImages];
   }
 
@@ -40,8 +40,8 @@ export const getMeta: (page?: number) => Promise<{
   version: number;
 }> = async function (page) {
   const manifest = await readFile(
-    path.resolve("./public/manifest.json"),
-    "utf8"
+    path.resolve('./public/manifest.json'),
+    'utf8'
   );
 
   const { images, totalImages, version } = JSON.parse(manifest);
@@ -56,7 +56,7 @@ export const getMeta: (page?: number) => Promise<{
 
 export const getGridMeta: (page?: number) => Promise<{
   totalImages: number;
-  images: Omit<Image, "postPreview">[];
+  images: Omit<Image, 'postPreview'>[];
   version: number;
 }> = async function (page) {
   const { images: rawImages, totalImages, version } = await getMeta(page);
@@ -77,12 +77,12 @@ export default async function handler(
 ) {
   console.log(`Server: requesting ${req.url}...`);
 
-  res.setHeader("Cache-Control", "max-age=31536000"); // 'never expires': https://www.ietf.org/rfc/rfc2616.txt
+  res.setHeader('Cache-Control', 'max-age=31536000'); // 'never expires': https://www.ietf.org/rfc/rfc2616.txt
 
   const page = parseInt(req.query.page?.toString()) || undefined;
   const { images, totalImages } = await getGridMeta(page);
 
-  if (req.method === "GET") {
+  if (req.method === 'GET') {
     return res.json({
       images,
       totalImages,

@@ -1,10 +1,10 @@
-import Head from "next/head";
-import { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
-import { getPostSrcFromIndex } from "../lib/helpers";
-import ImageGrid from "../components/ImageGrid";
-import { useImages } from "../hooks/";
-import { getGridMeta } from "./api/meta";
-import { ogImageDefault } from "../config";
+import Head from 'next/head';
+import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { getPostSrcFromIndex } from '../lib/helpers';
+import ImageGrid from '../components/ImageGrid';
+import { useImages } from '../hooks/';
+import { getGridMeta } from './api/meta';
+import { ogImageDefault } from '../config';
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   initialMeta,

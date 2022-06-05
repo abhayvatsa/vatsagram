@@ -1,10 +1,10 @@
-import { cdn } from "../config";
-import { gridWidths, postWidths, formats } from "../config";
+import { cdn } from '../config';
+import { gridWidths, postWidths, formats } from '../config';
 
 function getSrcSet(name: string, type: string, widths: number[]) {
   const srcSet = widths
     .map((width: number) => `${cdn}/${name}-${width}.${type} ${width}w`)
-    .join(",");
+    .join(',');
 
   return {
     type,

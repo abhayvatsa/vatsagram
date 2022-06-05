@@ -1,9 +1,9 @@
-import ReactGA, { EventArgs } from "react-ga";
-import { gaTrackingId, domainName } from "../config";
+import ReactGA, { EventArgs } from 'react-ga';
+import { gaTrackingId, domainName } from '../config';
 
 const isProduction = (() => {
-  const regex = new RegExp(domainName + "$"); // ensure domain name includes top-level domain
-  const hostname = process.browser ? window?.location?.hostname : "";
+  const regex = new RegExp(domainName + '$'); // ensure domain name includes top-level domain
+  const hostname = process.browser ? window?.location?.hostname : '';
   return regex.test(hostname);
 })();
 
