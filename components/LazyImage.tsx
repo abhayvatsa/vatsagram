@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState, FC } from "react";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useRef, FC } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useBooleanState } from '../hooks/';
 
 function b64ToDataUrl(b64String: string) {
   // Schema: data:[<mediatype>][;base64],<data>
@@ -13,9 +14,10 @@ const LazyImage: FC<{
   srcSets: { srcSet: string; type: string }[]; // Allow for multiple srcSets to enable webp + jpeg
   alt: string;
   b64Image: string;
-}> = ({ src, srcSets, alt, b64Image, ...delegated }) => {
+  className?: string;
+}> = ({ src, srcSets, alt, b64Image, className, ...delegated }) => {
   const imageEl = useRef<HTMLImageElement>();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useBooleanState(false);
   const { ref, inView } = useInView({ triggerOnce: true });
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const LazyImage: FC<{
   }, [isLoaded]);
 
   return (
-    <div>
+    <div className={className}>
       <style jsx>{`
         div {
           width: 100%;
@@ -57,7 +59,7 @@ const LazyImage: FC<{
         }
       `}</style>
       {inView ? (
-        <picture className={`parent ${isLoaded ? "show" : ""}`}>
+        <picture className={`parent ${isLoaded ? 'show' : ''}`}>
           {srcSets.map(({ srcSet, type }) => (
             <source key={type} srcSet={srcSet} type={`image/${type}`} />
           ))}
