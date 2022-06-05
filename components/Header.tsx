@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC } from "react";
 
 const Header: FC<{}> = ({ children }) => {
   return (
@@ -20,7 +20,7 @@ const Header: FC<{}> = ({ children }) => {
       `}</style>
       <header>{children}</header>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

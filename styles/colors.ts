@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css'
+import css from "styled-jsx/css";
 
 // Theme inspired by: https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/styles/e21f92b6.site-ltr.css
 export default css.global`
@@ -31,4 +31,4 @@ export default css.global`
   p {
     color: var(--theme-text);
   }
-`
+`;

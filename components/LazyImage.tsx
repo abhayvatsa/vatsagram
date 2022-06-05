@@ -1,26 +1,26 @@
-import { useEffect, useRef, useState, FC } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { useEffect, useRef, useState, FC } from "react";
+import { useInView } from "react-intersection-observer";
 
 function b64ToDataUrl(b64String: string) {
   // Schema: data:[<mediatype>][;base64],<data>
-  return `data:image/jpeg;base64,${b64String}` // Keep this jpeg for compatibility
+  return `data:image/jpeg;base64,${b64String}`; // Keep this jpeg for compatibility
 }
 
 // Blur up technique to improve percieved loading time
 // Inspiration: https://css-tricks.com/the-blur-up-technique-for-loading-background-images/
 const LazyImage: FC<{
-  src: string
-  srcSets: { srcSet: string; type: string }[] // Allow for multiple srcSets to enable webp + jpeg
-  alt: string
-  b64Image: string
+  src: string;
+  srcSets: { srcSet: string; type: string }[]; // Allow for multiple srcSets to enable webp + jpeg
+  alt: string;
+  b64Image: string;
 }> = ({ src, srcSets, alt, b64Image, ...delegated }) => {
-  const imageEl = useRef<HTMLImageElement>()
-  const [isLoaded, setIsLoaded] = useState(false)
-  const { ref, inView } = useInView({ triggerOnce: true })
+  const imageEl = useRef<HTMLImageElement>();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   useEffect(() => {
-    setIsLoaded(imageEl?.current?.complete || false)
-  }, [isLoaded])
+    setIsLoaded(imageEl?.current?.complete || false);
+  }, [isLoaded]);
 
   return (
     <div>
@@ -57,7 +57,7 @@ const LazyImage: FC<{
         }
       `}</style>
       {inView ? (
-        <picture className={`parent ${isLoaded ? 'show' : ''}`}>
+        <picture className={`parent ${isLoaded ? "show" : ""}`}>
           {srcSets.map(({ srcSet, type }) => (
             <source key={type} srcSet={srcSet} type={`image/${type}`} />
           ))}
@@ -80,7 +80,7 @@ const LazyImage: FC<{
         src={b64ToDataUrl(b64Image)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default LazyImage
+export default LazyImage;

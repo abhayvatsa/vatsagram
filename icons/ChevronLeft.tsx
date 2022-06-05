@@ -1,7 +1,7 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent } from "react";
 
 const ChevronLeft: FC<{
-  onClick?: (e: MouseEvent) => void
+  onClick?: (e: MouseEvent) => void;
 }> = (props) => (
   <svg
     display="inherit"
@@ -19,6 +19,6 @@ const ChevronLeft: FC<{
   >
     <polyline points="15 18 9 12 15 6"></polyline>
   </svg>
-)
+);
 
-export default ChevronLeft
+export default ChevronLeft;
