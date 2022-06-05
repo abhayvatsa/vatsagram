@@ -1,9 +1,9 @@
 // A script to process images in a dir.
-import fs from "fs/promises";
-import path from "path";
-import sharp from "sharp";
-import smartcrop from "smartcrop-sharp";
-import Exifr from "exifr";
+import fs from 'fs/promises';
+import path from 'path';
+import sharp from 'sharp';
+import smartcrop from 'smartcrop-sharp';
+import Exifr from 'exifr';
 
 import {
   gridWidths,
@@ -12,27 +12,27 @@ import {
   gridPreviewSize,
   sigma2,
   postPreviewSize,
-} from "../config";
+} from '../config';
 
 const srcDir = process.argv[2];
 const destDir = process.argv[3];
 // Intended to be executed from root dir
 async function main() {
   // FUTURE: Refactor into a pipeline to run on new image[s], reuse buffers.
-  console.log("Starting...");
+  console.log('Starting...');
 
   const files = (await fs.readdir(srcDir))
     .filter((e: string) => e.match(/^[0-9]*.jpeg$/)) // This is the expected filename
     .sort(function sortByFileId(a: string, b: string) {
-      return parseInt(a.split(".")[0]) - parseInt(b.split(".")[0]);
+      return parseInt(a.split('.')[0]) - parseInt(b.split('.')[0]);
     });
 
   if (files.length === 0) {
-    return console.error("No files found!");
+    return console.error('No files found!');
   }
   const totalImages = files.length;
 
-  console.log("Creating responsive image sizes...");
+  console.log('Creating responsive image sizes...');
   await Promise.all(files.map(generateGridImages));
   await Promise.all(files.map(generatePostImages));
 
@@ -52,7 +52,7 @@ async function main() {
   }
   images.reverse();
 
-  console.log("Writing manifest...`");
+  console.log('Writing manifest...`');
   await fs.writeFile(
     `${destDir}/manifest.json`,
     JSON.stringify({
@@ -87,7 +87,7 @@ async function generateGridPreview(_filename: string, i: number) {
       .jpeg()
       .resize(gridPreviewSize)
       .toBuffer()
-  ).toString("base64");
+  ).toString('base64');
 }
 
 async function generatePostPreview(filename: string) {
@@ -97,7 +97,7 @@ async function generatePostPreview(filename: string) {
       .resize(postPreviewSize)
       .blur(sigma2)
       .toBuffer()
-  ).toString("base64");
+  ).toString('base64');
 }
 
 // These take the default image aspect ratio

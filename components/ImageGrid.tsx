@@ -1,8 +1,8 @@
-import { FC } from "react";
-import Link from "next/link";
-import LazyImage from "../components/LazyImage";
-import { getGridSrcFromIndex, getGridSrcSetsFromIndex } from "../lib/helpers";
-import { Image } from "../pages/api/meta";
+import { FC } from 'react';
+import Link from 'next/link';
+import LazyImage from '../components/LazyImage';
+import { getGridSrcFromIndex, getGridSrcSetsFromIndex } from '../lib/helpers';
+import { Image } from '../pages/api/meta';
 
 function range(start: number, count: number) {
   return Array.apply(0, Array(count)).map(
