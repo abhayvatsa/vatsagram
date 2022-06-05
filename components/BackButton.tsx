@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import ChevronLeft from '../icons/ChevronLeft'
+import { useRouter } from "next/router";
+import Link from "next/link";
+import ChevronLeft from "../icons/ChevronLeft";
 
 const BackButton = function ({ isRouterBack }) {
-  const { back } = useRouter()
+  const { back } = useRouter();
 
   // if: "first" page: render a Next.js Link
   // else: use browser history back
@@ -15,7 +15,7 @@ const BackButton = function ({ isRouterBack }) {
         <ChevronLeft />
       </a>
     </Link>
-  )
-}
+  );
+};
 
-export default BackButton
+export default BackButton;

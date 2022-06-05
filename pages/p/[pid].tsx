@@ -1,11 +1,14 @@
-import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Head from 'next/head'
-import LazyImage from '../../components/LazyImage'
-import Header from '../../components/Header'
-import InfoIcon from '../../icons/InfoIcon'
-import BackButton from '../../components/BackButton'
-import { getPostSrcFromIndex, getPostSrcSetsFromIndex } from '../../lib/helpers'
-import { getMeta } from '../api/meta'
+import { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
+import LazyImage from "../../components/LazyImage";
+import Header from "../../components/Header";
+import InfoIcon from "../../icons/InfoIcon";
+import BackButton from "../../components/BackButton";
+import {
+  getPostSrcFromIndex,
+  getPostSrcSetsFromIndex,
+} from "../../lib/helpers";
+import { getMeta } from "../api/meta";
 
 const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   image: { id, description, postPreview },
@@ -54,11 +57,11 @@ const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         />
       </main>
     </>
-  )
-}
+  );
+};
 
 export async function getStaticPaths() {
-  const { totalImages } = await getMeta()
+  const { totalImages } = await getMeta();
 
   const paths = Array.from(Array(totalImages), (_x, i) => i)
     .reverse()
@@ -66,27 +69,27 @@ export async function getStaticPaths() {
       params: {
         pid: num.toString(),
       },
-    }))
+    }));
 
   return {
     paths,
     fallback: false,
-  }
+  };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params: { pid } }) => {
-  const initialMeta = await getMeta(0)
-  const id = parseInt(pid.toString())
+  const initialMeta = await getMeta(0);
+  const id = parseInt(pid.toString());
 
   const { gridPreview, ...image } = (await getMeta()).images[
     initialMeta.totalImages - id - 1
-  ] // Images are ordered from max -> min
+  ]; // Images are ordered from max -> min
 
   return {
     props: {
       image,
     },
-  }
-}
+  };
+};
 
-export default Post
+export default Post;

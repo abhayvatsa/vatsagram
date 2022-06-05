@@ -1,4 +1,4 @@
-import css from 'styled-jsx/css'
+import css from "styled-jsx/css";
 
 // This is used by post page to have height control size of containers
 export default css.global`
@@ -7,4 +7,4 @@ export default css.global`
   div#__next {
     height: 100%;
   }
-`
+`;

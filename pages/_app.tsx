@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react'
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import router from 'next/router'
-import { initialize, logPageView } from '../lib/analytics'
-import globalStyles from '../styles/globals'
-import reset from '../styles/reset'
-import colors from '../styles/colors'
-import typography from '../styles/typography'
-import { description, author, appleIcon } from '../config'
+import { useState, useEffect } from "react";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import router from "next/router";
+import { initialize, logPageView } from "../lib/analytics";
+import globalStyles from "../styles/globals";
+import reset from "../styles/reset";
+import colors from "../styles/colors";
+import typography from "../styles/typography";
+import { description, author, appleIcon } from "../config";
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    initialize()
+    initialize();
     //logPageView() // Initial page view: router.replace() makes this not necessary
-    router.events.on('routeChangeComplete', logPageView)
-    router.replace(router.asPath) // This is a hack, because history isn't updating properly
-  }, [])
+    router.events.on("routeChangeComplete", logPageView);
+    router.replace(router.asPath); // This is a hack, because history isn't updating properly
+  }, []);
 
   const [initialHistoryLength] = useState(
     process.browser ? window.history.length : 0
-  )
+  );
 
   return (
     <>
@@ -48,5 +48,5 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Component initialHistoryLength={initialHistoryLength} {...pageProps} />
     </>
-  )
+  );
 }
