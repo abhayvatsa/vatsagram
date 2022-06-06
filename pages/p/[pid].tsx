@@ -1,9 +1,7 @@
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import LazyImage from '../../components/LazyImage';
-import Header from '../../components/Header';
-import InfoIcon from '../../icons/InfoIcon';
-import BackButton from '../../components/BackButton';
+import { BackButton, Header, LazyImage } from '../../components/';
+import { InfoIcon } from '../../icons';
 import {
   getPostSrcFromIndex,
   getPostSrcSetsFromIndex,
