@@ -23,5 +23,5 @@ export default function useBooleanState(
     setState(!state);
   }, [state]);
 
-  return [state, set, clear, toggle];
+  return [state, (s) => set(s), () => clear(), () => toggle()];
 }
