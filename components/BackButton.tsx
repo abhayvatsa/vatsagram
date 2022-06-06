@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ChevronLeft from '../icons/ChevronLeft';
 
-const BackButton = function ({ isRouterBack }) {
+export default function BackButton({ isRouterBack }) {
   const { back } = useRouter();
 
   // if: "first" page: render a Next.js Link
@@ -16,6 +16,4 @@ const BackButton = function ({ isRouterBack }) {
       </a>
     </Link>
   );
-};
-
-export default BackButton;
+}

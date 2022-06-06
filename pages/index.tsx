@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { NextPage, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { getPostSrcFromIndex } from '../lib/helpers';
-import ImageGrid from '../components/ImageGrid';
+import { ImageGrid } from '../components/';
 import { useImages } from '../hooks/';
 import { getGridMeta } from './api/meta';
 import { ogImageDefault } from '../config';
