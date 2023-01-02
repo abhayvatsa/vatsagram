@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "cross-fetch": "^3.0.6",
-    "next": "^10.0.3",
+    "next": "^13.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-ga": "^3.3.0",
