@@ -4,26 +4,26 @@
   "private": true,
   "scripts": {
     "dev": ". ./bootstrap-dev.sh && next dev",
-    "build": "yarn get-manifest && next build",
+    "build": "npm run get-manifest && next build",
     "start": "next start",
     "typecheck": "tsc --noemit && tsc --noemit",
     "ts-node": "ts-node --project tsconfig-cli.json",
-    "process": "src=../photo-library && dest=./public && yarn ts-node scripts/process.ts \"$src\" \"$dest\"",
-    "get-manifest": "yarn ts-node scripts/build.ts",
+    "process": "src=../photo-library && dest=./public && npm run ts-node scripts/process.ts \"$src\" \"$dest\"",
+    "get-manifest": "npm run ts-node scripts/build.ts",
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "cross-fetch": "^3.0.6",
-    "next": "^10.0.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "next": "^14.2.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-ga": "^3.3.0",
     "react-intersection-observer": "^8.31.0",
-    "swr": "^0.3.9"
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.3",
-    "@types/node": "^14.14.10",
+    "@types/node": "^22.5.5",
     "@types/react": "^16.14.2",
     "@types/react-ga": "^2.3.0",
     "@types/sharp": "^0.26.1",
@@ -32,7 +32,7 @@
     "sharp": "^0.32.5",
     "smartcrop": "^2.0.3",
     "smartcrop-sharp": "^2.0.5",
-    "ts-node": "^9.1.0",
-    "typescript": "^4.1.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
   }
 }
