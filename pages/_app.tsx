@@ -8,6 +8,7 @@ import reset from '../styles/reset';
 import colors from '../styles/colors';
 import typography from '../styles/typography';
 import { description, author, appleIcon } from '../config';
+import {SWRConfig} from 'swr';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -46,7 +47,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="description" content={description} />
         <meta name="author" content={author} />
       </Head>
-      <Component initialHistoryLength={initialHistoryLength} {...pageProps} />
+      <SWRConfig value = {{ provider: () => new Map() }}>
+        <Component initialHistoryLength={initialHistoryLength} {...pageProps} />
+      </SWRConfig>
     </>
   );
 }

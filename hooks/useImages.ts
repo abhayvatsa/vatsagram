@@ -1,4 +1,4 @@
-import useSWR, { cache } from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import fetch from 'cross-fetch';
 import { Meta } from '../pages/api/meta';
 
@@ -10,6 +10,7 @@ const fetcher = ({ images }: Pick<Meta, 'images'>, path: string) => {
 };
 
 export default function useImages({ images, totalImages, version }: Meta) {
+  const { cache } = useSWRConfig();
   const key = 'images';
 
   const shouldRequest = images.length < totalImages; // Don't have all images yet.
@@ -20,14 +21,14 @@ export default function useImages({ images, totalImages, version }: Meta) {
     fetcher({ images }, `/api/meta?page=1&v=${version}`),
     {
       initialData: { images },
-      revalidateOnMount: !cache.has(key) && shouldRequest, // Fetch data on mount & not in cache
+      revalidateOnMount: !cache.get(key) && shouldRequest, // Fetch data on mount & not in cache
       revalidateOnFocus: false,
       revalidateOnReconnect: true,
     }
   );
 
   return {
-    images: data.images,
+    images: data?.images || images,
     totalImages,
     isLoading: !error && !data,
     isError: error,
