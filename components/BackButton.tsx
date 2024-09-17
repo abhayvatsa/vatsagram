@@ -10,10 +10,8 @@ export default function BackButton({ isRouterBack }) {
   return isRouterBack ? (
     <ChevronLeft aria-label="Back" onClick={back} />
   ) : (
-    <Link href="/">
-      <a aria-label="Back">
-        <ChevronLeft />
-      </a>
+    <Link href="/" aria-label="Back">
+      <ChevronLeft />
     </Link>
   );
 }

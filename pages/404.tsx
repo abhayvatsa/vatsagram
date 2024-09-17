@@ -15,8 +15,8 @@ export default function NotFound() {
       <h2>Not Found</h2>
       <p>Sorry, there is nothing at this URL.</p>
       <p>
-        <Link href="/">
-          <a aria-label="Back to Home">Go back home</a>
+        <Link href="/" aria-label="Back to Home">
+          Go back home
         </Link>
       </p>
     </main>

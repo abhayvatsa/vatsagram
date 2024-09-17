@@ -69,16 +69,14 @@ const ImageGrid: FC<{ images: Image[] }> = ({ images }) => {
           <div key={i} className="image-row">
             {images.map(({ id, description, gridPreview }) => {
               return (
-                <Link key={id} href={`/p/${id}`}>
-                  <a className="grid-item">
-                    <LazyImage
-                      key={id}
-                      alt={description}
-                      src={getGridSrcFromIndex(id)}
-                      srcSets={getGridSrcSetsFromIndex(id)}
-                      b64Image={gridPreview}
-                    />
-                  </a>
+                <Link className="grid-item" key={id} href={`/p/${id}`}>
+                  <LazyImage
+                    key={id}
+                    alt={description}
+                    src={getGridSrcFromIndex(id)}
+                    srcSets={getGridSrcSetsFromIndex(id)}
+                    b64Image={gridPreview}
+                  />
                 </Link>
               );
             })}
