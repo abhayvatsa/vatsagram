@@ -57,7 +57,7 @@ async function main() {
     `${destDir}/manifest.json`,
     JSON.stringify({
       images,
-      totalImages: files.length,
+      totalImages,
       version: new Date().getTime(), // Used to see if manifest has changed.
     })
   );
@@ -112,7 +112,7 @@ async function generatePostImages(filename: string, i: number) {
     ...postWidths.map((width: number) =>
       sharp(`${srcDir}/${filename}`)
         .resize(width)
-        .webp({ reductionEffort: 6 })
+        .webp({ effort: 6 })
         .toFile(`${destDir}/${i}-${width}.webp`)
     ),
   ]);
@@ -128,7 +128,7 @@ async function generateGridImages(filename: string, index: number) {
     ),
     ...gridWidths.map(async (width: number) =>
       (await applySmartCrop(path.join(srcDir, filename), width, width))
-        .webp({ reductionEffort: 6 })
+        .webp({ effort: 6 })
         .toFile(path.join(destDir, `g-${index}-${width}.webp`))
     ),
   ]);
